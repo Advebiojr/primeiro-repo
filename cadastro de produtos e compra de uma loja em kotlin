@@ -1,0 +1,144 @@
+class Loja {
+    // Vetores para armazenar os produtos no estoque e no carrinho
+    val estoque = mutableListOf<Pair<String, String>>() // Estoque de produtos (nome, preço)
+    val carrinho = mutableListOf<Pair<String, String>>() // Carrinho de compras (nome, preço)
+
+    // Função para exibir o menu de opções da loja
+    fun menu() {
+        var opcao: Int
+
+        do {
+            // Exibe o menu de opções
+            println("\nMenu da Loja:")
+            println("1. Adicionar produtos ao estoque")
+            println("2. Ver estoque")
+            println("3. Buscar produto")
+            println("4. Adicionar ao carrinho")
+            println("5. Ver carrinho")
+            println("6. Finalizar compra")
+            println("0. Sair")
+            print("Escolha uma opção: ")
+
+            // Lê a opção escolhida pelo usuário
+            opcao = readLine()?.toIntOrNull() ?: -1
+
+            // Chama a função correspondente à opção escolhida
+            when (opcao) {
+                1 -> adicionarProdutos()
+                2 -> mostrarEstoque()
+                3 -> buscarProduto()
+                4 -> adicionarAoCarrinho()
+                5 -> mostrarCarrinho()
+                6 -> finalizarCompra()
+                0 -> println("Encerrando o programa.")
+                else -> println("Opção inválida.")
+            }
+
+        } while (opcao != 0) // Continua até que o usuário escolha sair
+    }
+
+    // Função para adicionar produtos ao estoque
+    fun adicionarProdutos() {
+        // Pergunta ao usuário quantos produtos deseja adicionar
+        println("Quantos produtos deseja adicionar?")
+        val qtd = readLine()?.toIntOrNull() ?: return println("Número inválido.")
+
+        for (i in 1..qtd) { // Loop para adicionar a quantidade especificada de produtos
+            // Lê o nome do produto
+            println("Nome do produto $i:")
+            val nome = readLine() ?: "Desconhecido"
+
+            // Lê o preço do produto
+            println("Preço do produto:")
+            val preco = readLine() ?: "0.00"
+
+            // Adiciona o nome e preço ao estoque como um par
+            estoque.add(Pair(nome, preco))
+        }
+    }
+
+    // Função para mostrar os produtos disponíveis no estoque
+    fun mostrarEstoque() {
+        if (estoque.isEmpty()) { // Verifica se o estoque está vazio
+            println("Estoque vazio.")
+        } else {
+            println("\n Produtos no estoque:")
+            for ((nome, preco) in estoque) { // Itera sobre os produtos no estoque
+                println("$nome: R$ $preco") // Exibe cada produto com seu preço
+            }
+        }
+    }
+
+    // Função para buscar um produto específico no estoque
+    fun buscarProduto() {
+        println("\nProdutos no estoque:")
+        for ((nome, preco) in estoque) { // Mostra todos os produtos disponíveis
+            println("$nome: R$ $preco")
+        }
+        println("Digite o nome do produto para buscar:")
+        val nomeBusca = readLine() ?: ""
+
+        // Busca o produto pelo nome ignorando maiúsculas/minúsculas
+        val encontrado = estoque.find { it.first.equals(nomeBusca, ignoreCase = true) }
+
+        if (encontrado != null) { // Se o produto foi encontrado, exibe suas informações
+            println("Produto encontrado: ${encontrado.first}: R$ ${encontrado.second}")
+        } else {
+            println("Produto não encontrado.") // Caso contrário, informa que não foi encontrado
+        }
+    }
+
+    // Função para adicionar um produto ao carrinho de compras
+    fun adicionarAoCarrinho() {
+        println("\n Produtos no estoque:")
+        for ((nome, preco) in estoque) { // Mostra todos os produtos disponíveis no estoque
+            println("$nome: R$ $preco")
+        }
+        println("Digite o nome do produto que deseja adicionar ao carrinho:")
+        val nomeCarrinho = readLine() ?: ""
+
+        // Busca o produto pelo nome ignorando maiúsculas/minúsculas
+        val produto = estoque.find { it.first.equals(nomeCarrinho, ignoreCase = true) }
+
+        if (produto != null) { // Se o produto foi encontrado, adiciona ao carrinho
+            carrinho.add(produto)
+            println("Adicionado ao carrinho: ${produto.first}: R$ ${produto.second}")
+        } else {
+            println("Produto não encontrado no estoque.") // Caso contrário, informa que não foi encontrado
+        }
+    }
+
+    // Função para mostrar os produtos no carrinho de compras
+    fun mostrarCarrinho() {
+        if (carrinho.isEmpty()) { // Verifica se o carrinho está vazio
+            println("Carrinho vazio.")
+        } else {
+            println("\n🛒 Produtos no carrinho:")
+            for ((nome, preco) in carrinho) { // Itera sobre os produtos no carrinho e exibe suas informações
+                println("$nome: R$ $preco")
+            }
+        }
+    }
+
+    // Função para finalizar a compra e calcular o total a ser pago
+    fun finalizarCompra() {
+        if (carrinho.isEmpty()) { // Verifica se há produtos no carrinho antes de finalizar a compra
+            println("Carrinho vazio. Nada para comprar.")
+            return
+        }
+
+        var total = 0.0
+        for ((_, preco) in carrinho) { // Soma os preços dos produtos no carrinho para calcular o total
+            total += preco.toDoubleOrNull() ?: 0.0
+        }
+
+        // Exibe o valor total da compra e esvazia o carrinho após a finalização da compra
+        println("\n🧾 Compra finalizada. Valor total: R$ %.2f".format(total))
+        carrinho.clear()
+    }
+}
+
+fun main(){
+    val pessoa = Loja()
+    pessoa.menu()
+}
