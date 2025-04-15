@@ -1,0 +1,87 @@
+# Função para calcular o fatorial de um número n
+def calcular_fatorial(n):
+    # Se n é 0 ou 1, o fatorial é 1
+    if n == 0 or n == 1:
+        return 1
+    else:
+        fatorial = 1  # Inicializa a variável para armazenar o fatorial
+        # Calcula o fatorial multiplicando os números de 2 até n
+        for i in range(2, n + 1):
+            fatorial *= i
+        return fatorial  # Retorna o resultado do fatorial
+
+# Lê um número do usuário
+numero = int(input("numero:"))
+# Chama a função para calcular o fatorial e armazena o resultado
+resultado = calcular_fatorial(numero)
+# Exibe o resultado
+print(f'O fatorial de {numero} é: {resultado}')
+
+
+# Função para encontrar o maior e o menor número em uma lista
+def maior_menor(lista):
+    # Verifica se a lista está vazia
+    if len(lista) == 0:
+        return "A lista está vazia"
+    else:
+        # Usa as funções max() e min() para encontrar os valores desejados
+        maior = max(lista)
+        menor = min(lista)
+        return (maior, menor)  # Retorna uma tupla com o maior e menor valor
+
+# Lista de números para teste
+numeros = [1, 2, 3, 4, 5, 33, 55, 33, 22, 11, 223, 323]
+# Chama a função e armazena o resultado
+resultado = maior_menor(numeros)
+
+# Exibe o maior e menor número da lista
+print(f"O maior e o menor número da lista são {resultado}")
+
+
+# Função para encontrar o máximo em uma lista A com n elementos
+def maximo(A, n):
+    max = A[0]  # Inicializa max com o primeiro elemento da lista
+
+    for i in range(1, n):  # Itera sobre os elementos restantes da lista
+        if max < A[i]:  # Se encontrar um elemento maior que max
+            max = A[i]  # Atualiza max com esse elemento
+
+    return max  # Retorna o valor máximo encontrado
+
+# Lista de valores para teste
+valor = [2, 5, 4, 3, 4]
+n = len(valor)  # Obtém o tamanho da lista
+# Chama a função para encontrar o máximo e armazena o resultado
+resultado = maximo(valor, n)
+# Exibe o resultado do máximo encontrado
+print(resultado)  # Exibe o valor máximo
+
+
+# Função para calcular a soma dos cubos dos números de 1 até n
+def somatorio_cubo(n):
+    soma_parc = 0  # Inicializa a soma parcial como zero
+    for i in range(1, n + 1):  # Itera de 1 até n (inclusive)
+        soma_parc += i**3  # Adiciona o cubo do número atual à soma parcial
+
+    return soma_parc  # Retorna a soma dos cubos
+
+
+valor = 5  # Define um valor para calcular a soma dos cubos
+resultado = somatorio_cubo(valor)  # Chama a função e armazena o resultado
+# Exibe a soma dos cubos de 1 até valor
+print(f"O somatorio dos cubos de 1 até {valor} é: {resultado}")
+
+
+# Lê dois valores inteiros do usuário
+i = int(input(f"digite valor de i:"))
+j = int(input(f"digite valor de j:"))
+
+# Verifica se i é menor que j
+if i < j:
+    i = i + 1  # Incrementa i em um se for menor que j
+    print(f"valor de i : {i}")
+else:
+    # Se i não for menor que j, calcula o fatorial de j (i será multiplicado por todos os números até j)
+    for k in range(1, j + 1):
+        i = i * k  
+        print(f"valor de i: {i}") 
