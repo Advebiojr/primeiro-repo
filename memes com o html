@@ -1,0 +1,136 @@
+<html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <style>
+      html, body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+      }
+  
+      body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+          font-family: 'Poppins', sans-serif;
+          background-color: darkslategrey;
+      }
+  
+      .box {
+          width: 90%;
+          max-width: 300px;
+          padding: 20px;
+          background-color: rgb(23, 24, 23);
+          border: 1px solid black;
+          border-radius: 10px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          box-sizing: border-box;
+      }
+  
+      h2 {
+          text-align: center;
+          color: aliceblue;
+          margin-bottom: 20px;
+      }
+  
+      .conteuner {
+          display: flex;
+          gap: 10px;
+          justify-content: center;
+          width: 100%;
+          flex-wrap: wrap; /* Isso ajuda no responsivo */
+      }
+  
+      a {
+          text-decoration: none;
+      }
+  
+      button {
+          height: 50px;
+          width: 50px;
+          color: blue;
+          background: rgb(255, 255, 255);
+          border-radius: 10px;
+          font-weight: 600;
+          border: none;
+          cursor: pointer;
+          transition: transform 0.2s ease;
+      }
+  
+      button:hover {
+          transform: scale(1.1);
+      }
+  
+      @media (max-width: 768px) {
+          .box {
+              width: 90%;
+              padding: 15px;
+          }
+  
+          h2 {
+              font-size: 1.2rem;
+          }
+  
+          .conteuner {
+              flex-direction: column;
+              gap: 15px;
+          }
+  
+          button {
+              height: 60px;
+              width: 100%;
+              font-size: 1rem;
+          }
+      }
+  </style>
+  
+    <body>
+        
+    
+         
+          
+        
+
+        <div class="box">
+           
+            <h2>gay?</h2>
+            <div class="conteuner">
+                <div class="botam">
+                <button class="tip1">
+                    <a href="https://youtu.be/mG21-QX5d6o?si=NYDK88_ui1AhUxo8">Sim</a>
+                </button>
+                
+                <button class="tipo2" id="no">Não</button>
+                </div>
+             </div>
+            
+          
+        </div>
+    
+        
+
+    </body>
+    <script>
+    
+      let button = document.getElementById('no'); // Seleciona o botão "Não" pelo ID
+      let height = window.innerHeight - 50; // Calcula a altura disponível na janela menos um pouco
+      let width = window.innerWidth - 50; // Calcula a largura disponível na janela menos um pouco
+  
+      // Adiciona um evento de mouseover ao botão "Não"
+      button.addEventListener('mouseover', function (){
+         button.style.position = "absolute"; // Muda a posição do botão para absoluta quando passa o mouse
+         button.style.top = Math.random() * height + "px"; // Move verticalmente para uma posição aleatória dentro da altura disponível
+         button.style.left = Math.random() * width + "px"; // Move horizontalmente para uma posição aleatória dentro da largura disponível
+      })
+  
+  </script>
+</html>
