@@ -11,7 +11,7 @@ void insere() {
     if (t == tamanho) {
         printf("\n--- Lista cheia ---\n");
     } else {
-        printf("\nDigite um número a ser inserido na lista: ");
+        printf("\nDigite um nÃºmero a ser inserido na lista: ");
         scanf("%d", &a);
         lista[t] = a;
         t++;
@@ -23,11 +23,11 @@ void elemento() {
     if (t == 0) {
         printf("\n--- Lista vazia ---\n");
     } else {
-        printf("\nEm qual posição da lista está o elemento que deseja visualizar? ");
+        printf("\nEm qual posiÃ§Ã£o da lista estÃ¡ o elemento que deseja visualizar? ");
         scanf("%d", &posicao);
-        posicao--; // Ajuste para índice zero-base
+        posicao--; // Ajuste para Ã­ndice zero-base
         if (posicao < 0 || posicao >= t) {
-            printf("\n--- Posição inexistente ---\n");
+            printf("\n--- PosiÃ§Ã£o inexistente ---\n");
         } else {
             printf("\n--- Elemento: %d ---\n", lista[posicao]);
         }
@@ -51,7 +51,7 @@ void retirar() {
     if (t == 0) {
         printf("\n--- Lista vazia ---\n");
     } else {
-        printf("\n--- Último elemento removido: %d ---\n", lista[t - 1]);
+        printf("\n--- Ãšltimo elemento removido: %d ---\n", lista[t - 1]);
         t--;
     }
 }
@@ -88,15 +88,15 @@ int main() {
     setlocale(LC_ALL, "");
     do {
         printf("\n0 - Reiniciar Lista");
-        printf("\n1 - Inserir número na Lista");
+        printf("\n1 - Inserir nÃºmero na Lista");
         printf("\n2 - Exibir Lista");
         printf("\n3 - Exibir tamanho da Lista");
         printf("\n4 - Exibir um elemento da Lista");
-        printf("\n5 - Limpar último elemento da lista");
+        printf("\n5 - Limpar Ãºltimo elemento da lista");
         printf("\n6 - Salvar dados");
         printf("\n7 - Carregar lista");
         printf("\n8 - Sair");
-        printf("\nDigite uma opção: ");
+        printf("\nDigite uma opÃ§Ã£o: ");
         scanf("%d", &menu);
 
         switch (menu) {
@@ -128,7 +128,7 @@ int main() {
             case 8:
                 break;
             default:
-                printf("\n--- Opção inválida ---\n");
+                printf("\n--- OpÃ§Ã£o invÃ¡lida ---\n");
                 break;
         }
     } while (menu != 8);
